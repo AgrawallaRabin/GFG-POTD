@@ -1,0 +1,41 @@
+PROBLEM --> Find kth element of spiral matrix
+DIFFICULTY --> MEDIUM
+DATE --> 11/07/23
+T.C --> O(n*m) S.C --> 1
+
+CODE -->
+
+
+int findK(int a[MAX][MAX],int n,int m,int k)
+{
+ // Your code goes here.
+ int rs=0,re=n-1,cs=0,ce=m-1,count=0;
+ while(count!=n*m)
+{
+   for(int i=cs;i<=ce;i++)
+   {
+     count++;
+     if(count==k)return a[rs][i];
+    }
+    rs++;
+    for(int i=rs;i<=re;i++)
+    {
+     	count++;
+     	if(count==k)return a[i][ce];
+    }
+    ce--;
+    for(int i=ce;i>=cs;i--)
+    {
+     	count++;
+     	if(count==k)return a[re][i];
+     }
+     re--;
+     for(int i=re;i>=rs;i--)
+     {
+     	 count++;
+     	 if(count==k)return a[i][cs];
+     }
+     cs++;
+  }
+     		return 0;
+    }
