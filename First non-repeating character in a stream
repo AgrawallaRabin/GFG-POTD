@@ -1,0 +1,21 @@
+PROBLEM --> First non-repeating character in a stream
+DIFFICULTY --> Medium
+DATE --> 17/07/23
+T.C --> O(N) S.C --> O(N)
+
+CODE -->
+
+string FirstNonRepeating(string A){
+		    // Code here
+    unordered_map<char,int> m;
+    queue<char> q;
+    string ans = "";
+    for(int i=0;i<A.length();i++){
+        m[A[i]]++;
+        if(m[A[i]]==1) q.push(A[i]);
+        while(q.size()!=0 && m[q.front()]>1) q.pop();
+        if(!q.size()) ans += '#';
+        else ans += q.front();
+    }
+    return ans;
+}
