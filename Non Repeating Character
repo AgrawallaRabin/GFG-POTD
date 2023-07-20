@@ -1,0 +1,19 @@
+PROBLEM --> Non Repeating Character
+DIFFICULTY --> EASY
+DATE --> 20/07/23
+T.C --> O(N) S.C --> O(N)
+
+CODE -->
+
+char nonrepeatingCharacter(string S)
+    {
+       //Your code here
+       unordered_map<char,int> m;
+       for(int i=0;i<S.length();i++){
+           m[S[i]]++;
+       }
+       for(auto x : S){
+           if(m[x]==1) return x;
+       }
+       return '$';
+    }
