@@ -1,0 +1,26 @@
+PROBLEM --> Right View of Binary Tree
+DIFFICULTY --> EASY
+DATE --> 24/07/23
+T.C --> O(N) S.C --> O(H)
+
+CODE -->
+
+void solve(Node *root , int curr , int &prev , vector<int> &res)
+    {
+        if(!root) return;
+        if(curr>prev){
+            res.push_back(root->data);
+            prev++;
+        }
+        curr++;
+        solve(root->right,curr,prev,res);
+        solve(root->left,curr,prev,res);
+    }
+    vector<int> rightView(Node *root)
+    {
+       // Your Code here
+       vector<int> res;
+       int curr = 1 , prev = 0;
+       solve(root,curr,prev,res);
+       return res;
+    }
