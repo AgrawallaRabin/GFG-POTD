@@ -1,0 +1,28 @@
+PROBLEM --> Kth Ancestor in a Tree
+DIFFICULTY --> MEDIUM
+DATE --> 26/07/23
+T.C --> O(N) S.C --> O(N)
+
+CODE -->
+
+void solve(Node *root, int k, int node, int &ans , vector<int> &res)
+{
+    if(!root) return;
+    if(root->data == node && res.size()>=k){
+        ans = res[res.size()-k];
+        return;
+    }
+    res.push_back(root->data);
+    solve(root->left,k,node,ans,res);
+    solve(root->right,k,node,ans,res);
+    res.pop_back();
+}
+
+int kthAncestor(Node *root, int k, int node)
+{
+    // Code here
+    vector<int> res;
+    int ans = -1;
+    solve(root,k,node,ans,res);
+    return ans;
+}
